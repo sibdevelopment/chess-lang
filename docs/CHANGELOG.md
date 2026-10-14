@@ -7,4 +7,5 @@
 - Added configurable Reverb authentication routing for hosting the application under `/app`.
 - Moved the initial admin password from the seeder into deployment environment configuration.
 - Fixed MySQL migrations for the reserved `groups` table identifier.
+- Normalized the logo filename casing for Linux deployments.
 - Documented the isolated development deployment layout and required environment settings.
