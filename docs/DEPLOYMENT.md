@@ -26,3 +26,15 @@ service and its WebSocket endpoint is proxied through the same HTTPS host.
 Deploy the `development` branch to the development server. Production must
 use separate environment credentials, database, cache prefix, and process
 services.
+
+Cache configuration and views independently:
+
+```bash
+php artisan config:cache
+php artisan view:cache
+```
+
+Do not run `php artisan optimize` for the `/app` deployment. Its route cache
+changes the package route resolution at the subpath and causes `/app/` to
+return `405 Method Not Allowed`. Keep the route cache cleared with
+`php artisan route:clear`.
