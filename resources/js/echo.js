@@ -2,6 +2,9 @@ import Echo from 'laravel-echo';
 import Pusher from 'pusher-js';
 
 window.Pusher = Pusher;
+
+const appBasePath = (import.meta.env.VITE_APP_BASE_PATH || '').replace(/\/$/, '');
+
 window.Echo = new Echo({
     broadcaster: 'reverb',
     key: import.meta.env.VITE_REVERB_APP_KEY,
@@ -9,6 +12,7 @@ window.Echo = new Echo({
     wsPort: import.meta.env.VITE_REVERB_PORT || 80,
     wssPort: import.meta.env.VITE_REVERB_PORT || 443,
     forceTLS: (import.meta.env.VITE_REVERB_SCHEME || 'https') === 'https',
+    authEndpoint: `${appBasePath}/broadcasting/auth`,
     enabledTransports: ['ws', 'wss'],
 });
 
