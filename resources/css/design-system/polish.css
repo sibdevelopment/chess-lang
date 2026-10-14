@@ -1,0 +1,53 @@
+/* Final visual alignment for older feature-specific screens. */
+.ui-admin-nav { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; padding-right: 2px; }
+.ui-admin-sidebar__footer { flex: 0 0 auto; }
+.ui-admin-page h1 { font-family: var(--font-ui); }
+.ui-admin-page h2, .ui-admin-page h3 { font-family: var(--font-ui); }
+
+.dash-stat-label, .dash-stat-val { padding-right: 0; }
+
+/* Feature surfaces use flat colors and the shared spacing/radius scale. */
+.qb-tile::before,
+.an-study::before { background: var(--color-primary) !important; }
+.an-hero,
+.qs-hero,
+.countdown-banner,
+.sp-banner,
+.tlock-banner { background: var(--color-primary) !important; box-shadow: none !important; }
+.join-hero { background: #15803d !important; box-shadow: none !important; }
+.qs-question-card,
+.an-up-head,
+.an-up-drop,
+.cw-card-head,
+.lb-head { background: var(--color-surface) !important; background-image: none !important; }
+.eng-bar-fill,
+.tr-prog-bar > div,
+.an-prog .bar > div { background: var(--color-primary) !important; }
+
+.qb-tile,
+.qb-cat-tile,
+.qb-quiz-card,
+.an-study,
+.an-up-card,
+.an-empty,
+.qs-hero,
+.qs-question-card,
+.countdown-banner,
+.join-hero { border-radius: var(--radius-xl) !important; box-shadow: var(--shadow-soft) !important; }
+.qb-tile:hover,
+.qb-cat-tile:hover,
+.qb-quiz-card:hover,
+.an-study:hover { transform: none !important; box-shadow: var(--shadow-soft) !important; }
+
+.qb-tile-title,
+.an-up-title,
+.qs-hero h2 { font-size: 18px !important; font-weight: 600 !important; letter-spacing: 0 !important; }
+.an-hero h1 { font-size: 24px !important; font-weight: 600 !important; letter-spacing: 0 !important; }
+.qb-tile-sub,
+.an-up-sub,
+.an-study-meta,
+.qs-hero .meta { font-size: 12px !important; font-weight: 400 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,50 @@
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 0 10px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.ui-badge--new-id,
+.ui-badge--warning {
+  background: #fff7ed;
+  border-color: #fed7aa;
+  color: var(--color-warning);
+}
+
+.ui-badge--active,
+.ui-badge--success,
+.ui-badge--live,
+.ui-badge--completed {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+  color: var(--color-success);
+}
+
+.ui-badge--inactive,
+.ui-badge--cancelled,
+.ui-badge--danger {
+  background: #fef2f2;
+  border-color: #fecaca;
+  color: var(--color-danger);
+}
+
+.ui-badge--upcoming,
+.ui-badge--info {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: var(--color-info);
+}
+
+.ui-badge--secondary {
+  background: #f8fafc;
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+}

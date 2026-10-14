@@ -1,0 +1,22 @@
+.ui-empty-state {
+  display: grid;
+  gap: 10px;
+  place-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+.ui-empty-state__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.ui-empty-state__description {
+  max-width: 460px;
+  font-size: 14px;
+  color: var(--color-text-muted);
+}

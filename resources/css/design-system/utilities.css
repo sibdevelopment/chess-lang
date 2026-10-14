@@ -1,0 +1,15 @@
+.ui-hidden {
+  display: none !important;
+}
+
+.ui-w-full {
+  width: 100%;
+}
+
+.ui-gap-sm {
+  gap: var(--space-2);
+}
+
+.ui-gap-md {
+  gap: var(--space-3);
+}
