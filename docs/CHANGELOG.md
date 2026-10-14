@@ -10,3 +10,4 @@
 - Normalized the logo filename casing for Linux deployments.
 - Documented the subpath route-cache limitation discovered during deployment verification.
 - Documented the isolated development deployment layout and required environment settings.
+- Migrated the legacy SQLite dataset into the isolated development MySQL database after a successful dry run and rollback backup.
