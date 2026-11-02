@@ -12,20 +12,26 @@ use Illuminate\Support\Facades\Hash;
  *
  *   php artisan migrate:fresh --seeder=Database\\Seeders\\AdminOnlySeeder
  *
- * Login: admin / admin123
+ * Set INITIAL_ADMIN_PASSWORD in the deployment environment before running.
  */
 class AdminOnlySeeder extends Seeder
 {
     public function run(): void
     {
+        $password = env('INITIAL_ADMIN_PASSWORD');
+
+        if (blank($password)) {
+            throw new \RuntimeException('INITIAL_ADMIN_PASSWORD must be configured before seeding the admin user.');
+        }
+
         User::create([
             'name'     => 'Super Admin',
             'username' => 'admin',
             'email'    => 'admin@chess.academy',
-            'password' => Hash::make('admin123'),
+            'password' => Hash::make($password),
             'role'     => 'admin',
         ]);
 
-        $this->command->info('✅ Empty academy ready. Login: admin / admin123');
+        $this->command->info('Empty academy ready. Admin username: admin');
     }
 }

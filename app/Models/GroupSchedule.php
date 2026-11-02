@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class GroupSchedule extends Model
 {
     protected $fillable = [
+        'erp_batch_schedule_id',
+        'managed_by_erp',
         'group_id',
         'day_of_week',
         'start_time',
@@ -15,6 +17,7 @@ class GroupSchedule extends Model
     ];
 
     protected $casts = [
+        'managed_by_erp' => 'boolean',
         'day_of_week' => 'integer',
         'duration_minutes' => 'integer',
         'is_active'   => 'boolean',

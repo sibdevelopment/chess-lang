@@ -13,6 +13,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $fillable = [
+        'erp_user_id', 'erp_student_id', 'erp_coach_id', 'managed_by_erp',
         'name', 'username', 'email', 'password', 'role',
         'avatar', 'phone', 'country', 'timezone', 'is_active', 'last_seen',
     ];
@@ -20,6 +21,7 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
 
     protected $casts = [
+        'managed_by_erp' => 'boolean',
         'is_active' => 'boolean',
         'last_seen' => 'datetime',
     ];
