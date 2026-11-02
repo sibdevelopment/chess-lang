@@ -61,6 +61,13 @@ Schedule::command('archer:maintain')
     ->withoutOverlapping()
     ->runInBackground();
 
+if (config('erp-sync.enabled') && config('erp-sync.scheduled')) {
+    Schedule::command('erp:sync')
+        ->everyFiveMinutes()
+        ->withoutOverlapping()
+        ->runInBackground();
+}
+
 /*
 |--------------------------------------------------------------------------
 | classes:resync

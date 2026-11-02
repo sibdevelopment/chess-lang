@@ -38,3 +38,20 @@ Do not run `php artisan optimize` for the `/app` deployment. Its route cache
 changes the package route resolution at the subpath and causes `/app/` to
 return `405 Method Not Allowed`. Keep the route cache cleared with
 `php artisan route:clear`.
+
+### ArcherKids ERP synchronization
+
+Chesslang keeps its own database. Configure the ArcherKids development
+database as the secondary `erp` connection using the `ERP_DB_*` variables in
+`.env.example`; do not replace Chesslang's primary `DB_*` values.
+
+Run a full transaction-backed preview before the first import:
+
+```bash
+php artisan erp:sync --dry-run
+php artisan erp:sync
+```
+
+ERP-managed users, groups, and schedules are linked by stable ERP IDs. Missing
+source records are never deleted. Set `ERP_SYNC_SCHEDULED=true` only after the
+first manual sync has been reviewed successfully.

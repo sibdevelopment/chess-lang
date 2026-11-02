@@ -15,8 +15,8 @@ class Group extends Model
     public const DEFAULT_DURATION_MINUTES = 60;
     public const LEVELS = ['beginner', 'intermediate', 'advanced', 'expert'];
 
-    protected $fillable = ['name','country','timezone','start_date','end_date','level','coach_id','created_by','unlocked_chapter_index','description','is_active'];
-    protected $casts = ['is_active' => 'boolean', 'start_date' => 'date', 'end_date' => 'date'];
+    protected $fillable = ['erp_batch_id','managed_by_erp','name','country','timezone','start_date','end_date','level','coach_id','created_by','unlocked_chapter_index','description','is_active'];
+    protected $casts = ['managed_by_erp' => 'boolean', 'is_active' => 'boolean', 'start_date' => 'date', 'end_date' => 'date'];
 
     public function coach()    { return $this->belongsTo(User::class, 'coach_id'); }
     public function creator()  { return $this->belongsTo(User::class, 'created_by'); }

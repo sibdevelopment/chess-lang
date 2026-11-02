@@ -70,6 +70,23 @@ return [
             ]) : [],
         ],
 
+        'erp' => [
+            'driver' => 'mysql',
+            'host' => env('ERP_DB_HOST', '127.0.0.1'),
+            'port' => env('ERP_DB_PORT', '3306'),
+            'database' => env('ERP_DB_DATABASE', ''),
+            'username' => env('ERP_DB_USERNAME', ''),
+            'password' => env('ERP_DB_PASSWORD', ''),
+            'unix_socket' => env('ERP_DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'timezone' => env('ERP_DB_TIMEZONE', '+05:30'),
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),
