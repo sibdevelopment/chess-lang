@@ -9,7 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('erp_user_id')->nullable()->unique()->after('id');
+            // A parent ERP account can own multiple student profiles.
+            $table->unsignedBigInteger('erp_user_id')->nullable()->index()->after('id');
             $table->unsignedBigInteger('erp_student_id')->nullable()->unique()->after('erp_user_id');
             $table->unsignedBigInteger('erp_coach_id')->nullable()->unique()->after('erp_student_id');
             $table->boolean('managed_by_erp')->default(false)->index()->after('erp_coach_id');
@@ -41,7 +42,7 @@ return new class extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->dropUnique(['erp_user_id']);
+            $table->dropIndex(['erp_user_id']);
             $table->dropUnique(['erp_student_id']);
             $table->dropUnique(['erp_coach_id']);
             $table->dropIndex(['managed_by_erp']);

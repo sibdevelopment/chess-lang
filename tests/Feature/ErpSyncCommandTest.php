@@ -83,6 +83,22 @@ class ErpSyncCommandTest extends TestCase
         $this->assertSame(1, GroupSchedule::where('erp_batch_schedule_id', 401)->count());
     }
 
+    public function test_one_erp_account_can_sync_multiple_student_profiles(): void
+    {
+        DB::connection('erp_test')->table('students')->insert([
+            'id' => 102, 'user_id' => 1, 'first_name' => 'Second', 'last_name' => 'Student',
+            'student_id' => 'ARCHER1002', 'portal_password' => 'StudentSecretTwo',
+            'email' => 'student@example.test', 'mobile' => '9000000003',
+            'country' => 'INDIA', 'timezone' => 'Asia/Kolkata', 'status' => 'ACTIVE',
+        ]);
+
+        $this->artisan('erp:sync', ['--users-only' => true])->assertSuccessful();
+
+        $this->assertSame(2, User::where('erp_user_id', 1)->where('role', 'student')->count());
+        $this->assertDatabaseHas('users', ['erp_student_id' => 101, 'username' => 'ARCHER1001']);
+        $this->assertDatabaseHas('users', ['erp_student_id' => 102, 'username' => 'ARCHER1002']);
+    }
+
     private function createErpSchema(): void
     {
         $schema = Schema::connection('erp_test');
